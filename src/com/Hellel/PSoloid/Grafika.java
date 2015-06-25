@@ -53,8 +53,8 @@ public class Grafika {
         for (int i = 1; i <= verSize; i++) {
             for (int j = 1; j <= horSize; j++) {
                 if ((i == verSize) || (j == 1) ||
-                        (j == horSize) || (i == 1) ||
-                        (j == i) || (i + j == 1 + verSize)) {
+                    (j == horSize) || (i == 1) ||
+                    (j == i) || (i + j == 1 + verSize)) {
                     System.out.print("*");
                 } else {
                     System.out.print(" ");

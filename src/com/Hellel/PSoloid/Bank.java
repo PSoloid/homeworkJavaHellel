@@ -14,6 +14,7 @@ import java.util.Locale;
 public class Bank {
 
     public static void run() {
+
         NumberFormat formatterCurrency = NumberFormat.getCurrencyInstance();
 
         System.out.print("Please input bank deposit sum: ");
@@ -23,7 +24,7 @@ public class Bank {
         NumberFormat formatterPercent = NumberFormat.getPercentInstance();
         System.out.print("Please input percent: ");
         double percent = Main.getInputDouble();
-        percent =percent/100;
+        percent = percent/100;
         System.out.println("Your input " + formatterPercent.format(percent) + " as a percent \n");
 
         NumberFormat formatterNumber = NumberFormat.getNumberInstance();

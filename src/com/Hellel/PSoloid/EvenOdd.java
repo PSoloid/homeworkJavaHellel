@@ -27,8 +27,8 @@ public class EvenOdd {
 //        * ¬вести число, определить простое ли оно.
 
         boolean simple = true;
-        for (int i=2; i<num; i++)
-            if ((num % i == 0) && (num > 0)) {
+        for (int i=2; i<Math.abs(num); i++)
+            if ((num % i == 0) || (num < 0)) {
                 simple = false;
             }
         if (simple) {
@@ -40,7 +40,7 @@ public class EvenOdd {
 //         * ¬вести число, определить каким числам оно кратно.
 
         System.out.println("\nThe number is division by :");
-        for (int i=1; i<=num; i++)
+        for (int i=1; i<=Math.abs(num); i++)
             if (num % i == 0) {
                System.out.print(i + ", ");
             }

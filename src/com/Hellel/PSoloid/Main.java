@@ -49,7 +49,7 @@ public class Main {
         System.out.println("2. Bank");
         System.out.println("3. Grafika");
         System.out.println("4. Number properties");
-        System.out.print("\n Input (0-6): ");
+        System.out.print("\n Input (0-4): ");
 
         boolean flag;
         do {
@@ -70,7 +70,7 @@ public class Main {
                         Grafika.run();
                         break;
                     case 4:
-                        EvenOdd.run();
+                        Properties.run();
                         break;
                     default:
                         System.out.println("error, try again.");

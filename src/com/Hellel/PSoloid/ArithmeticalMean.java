@@ -10,23 +10,26 @@ import java.util.Scanner;
 public class ArithmeticalMean {
 
 
-
-
     public static void run() {
-        System.out.print("Please input first number: ");
-        double firstNum = Main.getInputDouble();
-        System.out.println("Your input " + firstNum + " as a first number \n");
-
-
-        System.out.print("Please input second number: ");
-        double secondNum = Main.getInputDouble();
-        System.out.println("Your input " + secondNum + " as a second number \n");
-
-        System.out.print("Please input third number: ");
-        double thirdNum = Main.getInputDouble();
-        System.out.println("Your input " + thirdNum + " as a third number \n");
-
-        System.out.println("ArithmeticalMean = " + ((firstNum+secondNum+thirdNum)/3));
+        double sum = 0;
+        int i = 0;
+        boolean flag = false;
+        System.out.println("Please input numbers (To calculate input '=')");
+        do {
+            Scanner scanner = new Scanner(System.in);
+            if (scanner.hasNextDouble()) {
+                sum = sum + scanner.nextDouble();
+                i++;
+            } else if (scanner.next().equals("=")) {
+                flag = true;
+            } else {
+                System.out.println("error, try again.");
+            }
     }
-
+        while (!flag);
+        System.out.print("Arithmetical mean = " + sum/i);
+    }
 }
+
+
+

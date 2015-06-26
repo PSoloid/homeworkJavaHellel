@@ -54,7 +54,7 @@ public class Grafika {
             for (int j = 1; j <= horSize; j++) {
                 if ((i == verSize) || (j == 1) ||
                     (j == horSize) || (i == 1) ||
-                    (j == i) || (i + j == 1 + verSize)) {
+                    /*(10*(j-1)/(horSize-1) == 10*(i-1)/(verSize-1)) ||*/ (10*(j-horSize)/(1-horSize) == 10*(i-verSize)/(1-verSize))) {
                     System.out.print("*");
                 } else {
                     System.out.print(" ");
@@ -83,11 +83,11 @@ public class Grafika {
 
         System.out.print("Please input horizontal size: ");
         int horSize = Main.getInputInt();
-        System.out.println("Your input " + horSize + " as a vertical size \n");
+        System.out.println("Your input " + horSize + " as a horizontal size \n");
 
         System.out.print("Please input vertical size: ");
         int verSize = Main.getInputInt();
-        System.out.println("Your input " + verSize + " as a horizontal size \n");
+        System.out.println("Your input " + verSize + " as a vertical size \n");
 
         square(horSize, verSize);
         System.out.println("\n\n");

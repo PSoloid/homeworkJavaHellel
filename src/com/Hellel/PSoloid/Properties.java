@@ -21,18 +21,23 @@ public class Properties {
     }
 
 //        * ¬вести число, определить простое ли оно.
-    public static void simple (int num){
-        boolean simple = true;
-        for (int i=2; i<Math.abs(num); i++)
-            if ((num % i == 0) || (num < 0)) {
+public static void simple (int num){
+    boolean simple = true;
+    if (((num % 2==0) && (num !=2)) || (num < 0) ) {
+        simple = false;
+    }else{
+        for (int i=3; i<Math.round(Math.sqrt(num))+1; i++)
+            if ((num % i == 0)) {
                 simple = false;
+                break;
             }
-        if (simple) {
-            System.out.println("\nThe number is simple");
-        }else {
-            System.out.println("\nThe number is not simple");
-        }
     }
+    if (simple) {
+        System.out.println("\nThe number is simple");
+    }else {
+        System.out.println("\nThe number is not simple");
+    }
+}
 
 //         * ¬вести число, определить каким числам оно кратно.
     public static void division (int num) {

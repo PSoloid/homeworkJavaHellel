@@ -48,7 +48,7 @@ public class Grafika {
         }
     }
 
-    //        �. �������
+    //        Konvert
     public static void cross(int horSize, int verSize) {
         for (int i = 1; i <= verSize; i++) {
             for (int j = 1; j <= horSize; j++) {

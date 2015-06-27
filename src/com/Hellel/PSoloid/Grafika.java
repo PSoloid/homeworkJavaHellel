@@ -54,7 +54,10 @@ public class Grafika {
             for (int j = 1; j <= horSize; j++) {
                 if ((i == verSize) || (j == 1) ||
                     (j == horSize) || (i == 1) ||
-                    /*(10*(j-1)/(horSize-1) == 10*(i-1)/(verSize-1)) ||*/ (10*(j-horSize)/(1-horSize) == 10*(i-verSize)/(1-verSize))) {
+                   /* (10*(j-1)/(horSize-1) == 10*(i-1)/(verSize-1)) ||*/         // уравнение прямой
+                    (i==(j*(1-verSize)/(1-horSize))+(verSize-horSize*(1-verSize)/(1-horSize))) ||
+                    (i==(j*(verSize-1)/(1-horSize))+(1-horSize*(verSize-1)/(1-horSize)))){
+
                     System.out.print("*");
                 } else {
                     System.out.print(" ");

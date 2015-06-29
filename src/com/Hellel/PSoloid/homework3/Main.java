@@ -26,7 +26,6 @@ public class Main {
     }
 
     public static int getInputInt(){
-        System.out.println("Input integer number");
         int num = 0;
         boolean flag = false;
         do {
@@ -47,7 +46,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("0. Number sum");
-        System.out.println("1. Arithmetical mean");
+        System.out.println("1. Long square");
         System.out.println("2. Bank");
         System.out.println("3. Grafika");
         System.out.println("4. Number properties");
@@ -63,7 +62,7 @@ public class Main {
                         SumNamber.run();
                         break;
                     case 1:
-//                        ArithmeticalMean.run();
+                        LongSquare.run();
                         break;
                     case 2:
 //                        Bank.run();

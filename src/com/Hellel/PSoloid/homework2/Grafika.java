@@ -1,4 +1,4 @@
-package com.Hellel.PSoloid;
+package com.Hellel.PSoloid.homework2;
 
 /**
  * Created by otk_prog on 25.06.2015.

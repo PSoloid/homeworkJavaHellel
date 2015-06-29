@@ -1,8 +1,6 @@
-package com.Hellel.PSoloid;
+package com.Hellel.PSoloid.homework2;
 
 import java.text.NumberFormat;
-import java.util.Currency;
-import java.util.Locale;
 
 /**
  * Created by otk_prog on 25.06.2015.

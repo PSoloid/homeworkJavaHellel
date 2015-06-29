@@ -1,6 +1,5 @@
-package com.Hellel.PSoloid;
+package com.Hellel.PSoloid.homework2;
 
-import java.math.*;
 /**
  * Created by otk_prog on 25.06.2015.
  *

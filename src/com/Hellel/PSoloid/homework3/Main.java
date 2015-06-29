@@ -1,9 +1,11 @@
-package com.Hellel.PSoloid;
+package com.Hellel.PSoloid.homework3;
 
 import java.util.Scanner;
 
+/**
+ * Created by Morozov on 29.06.2015.
+ */
 public class Main {
-
     public static double getInputDouble(){
 
         double num = 0;
@@ -24,7 +26,7 @@ public class Main {
     }
 
     public static int getInputInt(){
-
+        System.out.println("Input integer number");
         int num = 0;
         boolean flag = false;
         do {
@@ -44,7 +46,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("0. Calculator");
+        System.out.println("0. Number sum");
         System.out.println("1. Arithmetical mean");
         System.out.println("2. Bank");
         System.out.println("3. Grafika");
@@ -58,19 +60,19 @@ public class Main {
             if (scanner.hasNextInt()) {
                 switch (scanner.nextInt()) {
                     case 0:
-                        Calculator.run();
-                       break;
+                        SumNamber.run();
+                        break;
                     case 1:
-                        ArithmeticalMean.run();
+//                        ArithmeticalMean.run();
                         break;
                     case 2:
-                        Bank.run();
+//                        Bank.run();
                         break;
                     case 3:
-                        Grafika.run();
+//                        Grafika.run();
                         break;
                     case 4:
-                        Properties.run();
+//                        Properties.run();
                         break;
                     default:
                         System.out.println("error, try again.");
@@ -85,3 +87,4 @@ public class Main {
         while (!flag) ;
     }
 }
+

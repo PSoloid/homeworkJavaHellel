@@ -1,4 +1,4 @@
-package com.Hellel.PSoloid;
+package com.Hellel.PSoloid.homework2;
 
 import java.util.Scanner;
 

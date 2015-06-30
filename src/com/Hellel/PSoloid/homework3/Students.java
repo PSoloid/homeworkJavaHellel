@@ -22,11 +22,18 @@ public class Students {
         System.out.println("Input surname of the student");
 
         Scanner scanner = new Scanner(System.in);
-        students[students.length + 1] = scanner.nextLine();
+        String inputSurmame=scanner.nextLine();
 
-        print(students);
+        String [] newStudents = new String [students.length+1];
+        for(int i=0; i<students.length;i++) {
+            newStudents[i] = students[i];
 
-        return students;
+        }
+
+        newStudents[newStudents.length-1] = inputSurmame;
+        print(newStudents);
+
+        return newStudents;
     }
 
     public static String[] delete(String [] students) {

@@ -59,7 +59,7 @@ public class Main {
             if (scanner.hasNextInt()) {
                 switch (scanner.nextInt()) {
                     case 0:
-                        SumNamber.run();
+                        SumNumber.run();
                         break;
                     case 1:
                         LongSquare.run();

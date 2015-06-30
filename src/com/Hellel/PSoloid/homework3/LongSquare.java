@@ -19,9 +19,9 @@ public class LongSquare {
         int y = Main.getInputInt();
 
         if ((x>x1)&&(x<x2)&&(y>y1)&&(y<y2)){
-            System.out.println("Point in square");
+            System.out.println("\nPoint in square");
         }else{
-            System.out.println("Point out of square");
+            System.out.println("\nPoint out of square");
         }
     }
 }

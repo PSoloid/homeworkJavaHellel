@@ -48,7 +48,7 @@ public class Main {
         System.out.println("0. Number sum");
         System.out.println("1. Long square");
         System.out.println("2. XOR");
-        System.out.println("3. Grafika");
+        System.out.println("3. Students");
         System.out.println("4. Fibonacci");
         System.out.print("\n Input (0-4): ");
 
@@ -68,7 +68,7 @@ public class Main {
                         Xor.run();
                         break;
                     case 3:
-//                        Grafika.run();
+                        Students.run();
                         break;
                     case 4:
                         System.out.print("Iput index: ");

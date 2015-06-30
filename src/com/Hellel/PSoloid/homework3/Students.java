@@ -7,32 +7,51 @@ import java.util.Scanner;
  */
 public class Students {
 
+    public static void print(String [] students) {
+        System.out.println("\nList of students:\n");
+        for (String list : students) {
+            System.out.println(list);
+        }
+    }
+
+
+
     public static String[] add(String [] students) {
+
 
         System.out.println("Input surname of the student");
 
         Scanner scanner = new Scanner(System.in);
         students[students.length + 1] = scanner.nextLine();
 
-        System.out.println("New list");
-        for (String str : students) {
-            System.out.println(str);
-        }
+        print(students);
+
         return students;
     }
 
-    public static void delete(String [] students) {
+    public static String[] delete(String [] students) {
 
         System.out.println("Input surname of the student");
 
         Scanner scanner = new Scanner(System.in);
-        students[students.length + 1] = scanner.nextLine();
 
-        System.out.println("New list");
-        for (String str : students) {
-            System.out.println(str);
+        String [] newStudents =new String [students.length-1] ;
+        String inputSurmame=scanner.nextLine();
+        int j=0;
+        for ( String str : students ){
+            if (!str.equals(inputSurmame)){
+                newStudents[j]=str;
+                j++;
+            }
+
         }
-    }
+        print( newStudents);
+        return newStudents;
+        }
+
+
+
+
 
 
 
@@ -64,7 +83,7 @@ public class Students {
                         students=add(students);
                         break;
                     case 1:
-                        LongSquare.run();
+                        students =delete(students);
                         break;
                     case 2:
                         Xor.run();

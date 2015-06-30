@@ -19,7 +19,7 @@ public class Students {
     public static String[] add(String [] students) {
 
 
-        System.out.println("Input surname of the student");
+        System.out.println("Input student`s surname");
 
         Scanner scanner = new Scanner(System.in);
         String inputSurmame=scanner.nextLine();
@@ -38,7 +38,7 @@ public class Students {
 
     public static String[] delete(String [] students) {
 
-        System.out.println("Input surname of the student");
+        System.out.println("Input  student`s surname");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -57,18 +57,67 @@ public class Students {
         }
 
 
+        public static void contains(String [] students) {
+
+            System.out.println("Input  student`s surname");
+
+            Scanner scanner = new Scanner(System.in);
+            String inputSurmame = scanner.nextLine();
+            boolean flag = false;
+
+            for (int i = 0; i < students.length; i++) {
+                if (students[i] == inputSurmame) {
+                    System.out.println("Student " + inputSurmame + "is in list ¹ " + i);
+                    flag = true;
+                }
+            }
+            if (flag == false) {
+                System.out.println("Student is not in the list");
+            }
+        }
 
 
+        public static  String[] clear(String [] students) {
+            for (int i = 0; i < students.length; i++) {
+                students[i]="";
+            }
+            System.out.println("Massive is clear");
+            return students;
+        }
 
+        public static String[] trim (String [] students) {
 
+            int j=0;
+            for ( String str : students ) {
+                if (!str.equals("")) {
+                    j += 1;
+                }
+            }
+
+            String [] newStudents =new String [j] ;
+            j=0;
+            for ( String str : students ){
+                if (!str.equals("")){
+                    newStudents[j]=str;
+                    j++;
+                }
+
+            }
+            print( newStudents);
+            return newStudents;
+    }
 
 
 
     public static void run(){
 
-        String [] students = {"Petrov","Ivanov","Sidorov","Kuznetcov","Antonov" };
+        String [] students = {"Petrov","Ivanov","Sidorov","Kuznetcov","","Antonov" };
+        for ( String str : students ) {
+            System.out.print(str + ",");
+        }
 
-        System.out.println("0. add");
+
+        System.out.println("\n\n0. add");
         System.out.println("1. delete");
         System.out.println("2. contains");
         System.out.println("3. clear");
@@ -78,7 +127,7 @@ public class Students {
         System.out.println("7. containsAll");
         System.out.println("8. equals");
         System.out.println("9. print");
-        System.out.print("\n Input (0-4): ");
+        System.out.print("\n Input (0-9): ");
 
         boolean flag;
         do {
@@ -93,13 +142,28 @@ public class Students {
                         students =delete(students);
                         break;
                     case 2:
-                        Xor.run();
+                        contains(students);
                         break;
                     case 3:
-//                        Grafika.run();
+                        students =clear(students);
                         break;
                     case 4:
-//                        Properties.run();
+                        students =trim(students);
+                        break;
+                    case 5:
+                        students=add(students);
+                        break;
+                    case 6:
+                        students =delete(students);
+                        break;
+                    case 7:
+                        contains(students);
+                        break;
+                    case 8:
+                        students =clear(students);
+                        break;
+                    case 9:
+                        students =trim(students);
                         break;
                     default:
                         System.out.println("error, try again.");

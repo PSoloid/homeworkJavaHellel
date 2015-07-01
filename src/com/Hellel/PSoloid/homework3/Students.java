@@ -1,5 +1,6 @@
 package com.Hellel.PSoloid.homework3;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -108,6 +109,59 @@ public class Students {
     }
 
 
+    public static String[] merge(String [] students, String [] students2){
+
+
+       System.out.print("union");
+       String [] rezStudents = new String[students.length+students2.length];
+
+       if(students==null)return students2;
+       if(students2==null)return students;
+
+        String[] newStudents=new String[students.length+students2.length];
+
+        System.arraycopy(students, 0, newStudents, 0, students.length);
+        System.arraycopy(students2, 0, newStudents, students.length, students2.length);
+
+        print(newStudents);
+
+        return newStudents;
+    }
+
+    public static String[] sort (String [] students) {
+        Arrays.sort(students);
+        print(students);
+
+        return students;
+    }
+
+
+    public static String[] containsAll (String [] students, String [] students2){
+
+        String [] rez = new String[students2.length];
+        int j=0;
+        for ( String str : students ) {
+            for (int i = 0; i < students2.length; i++) {
+                if (str == students2[i]) {
+                    rez[j] = students2[i];
+                    j++;
+                }
+            }
+        }
+        print(rez);
+        return rez;
+    }
+
+    public static void equals (String [] students, String [] students2){
+
+                  if (students.equals(students2))
+                      System.out.print("equal");
+                  else
+                      System.out.print("unequal");
+                }
+
+
+
 
     public static void run(){
 
@@ -116,66 +170,81 @@ public class Students {
             System.out.print(str + ",");
         }
 
+        String [] students2 = {"Lebedenko","Kononov","Sinicin"};
 
-        System.out.println("\n\n0. add");
-        System.out.println("1. delete");
-        System.out.println("2. contains");
-        System.out.println("3. clear");
-        System.out.println("4. trim");
-        System.out.println("5. merge");
-        System.out.println("6. sort");
-        System.out.println("7. containsAll");
-        System.out.println("8. equals");
-        System.out.println("9. print");
-        System.out.print("\n Input (0-9): ");
+        String [] students3 = {"Ivanov","Sidorov","Kuznetcov"};
 
-        boolean flag;
-        do {
-            flag =true;
-            Scanner scanner = new Scanner(System.in);
-            if (scanner.hasNextInt()) {
-                switch (scanner.nextInt()) {
-                    case 0:
-                        students=add(students);
-                        break;
-                    case 1:
-                        students =delete(students);
-                        break;
-                    case 2:
-                        contains(students);
-                        break;
-                    case 3:
-                        students =clear(students);
-                        break;
-                    case 4:
-                        students =trim(students);
-                        break;
-                    case 5:
-                        students=add(students);
-                        break;
-                    case 6:
-                        students =delete(students);
-                        break;
-                    case 7:
-                        contains(students);
-                        break;
-                    case 8:
-                        students =clear(students);
-                        break;
-                    case 9:
-                        students =trim(students);
-                        break;
-                    default:
-                        System.out.println("error, try again.");
-                        flag = false;
-                        break;
-                }
-            } else {
-                System.out.println("error, try again.");
-                flag = false;
+        boolean flag,flag1;
+do {
+    flag1 = false;
+
+    System.out.println("\n\n0. add");
+    System.out.println("1. delete");
+    System.out.println("2. contains");
+    System.out.println("3. clear");
+    System.out.println("4. trim");
+    System.out.println("5. merge");
+    System.out.println("6. sort");
+    System.out.println("7. containsAll");
+    System.out.println("8. equals");
+    System.out.println("9. print");
+    System.out.println("10. Exit");
+    System.out.print("\n Input (0-10): ");
+
+
+    do {
+        flag = true;
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.hasNextInt()) {
+            switch (scanner.nextInt()) {
+                case 0:
+                    students = add(students);
+                    break;
+                case 1:
+                    students = delete(students);
+                    break;
+                case 2:
+                    contains(students);
+                    break;
+                case 3:
+                    students = clear(students);
+                    break;
+                case 4:
+                    students = trim(students);
+                    break;
+                case 5:
+                    students = merge(students, students2);
+                    break;
+                case 6:
+                    students = sort(students);
+                    break;
+                case 7:
+                    containsAll(students, students3);
+                    break;
+                case 8:
+                    equals(students, students2);
+                    ;
+                    break;
+                case 9:
+                    print(students);
+                    break;
+                case 10:
+                    flag1 = true;
+                    flag = true;
+                    break;
+                default:
+                    System.out.println("error, try again.");
+                    flag = false;
+                    break;
             }
+        } else {
+            System.out.println("error, try again.");
+            flag = false;
         }
-        while (!flag) ;
+    }
+    while (!flag);
+}
+while (!flag1) ;
     }
 
 }

@@ -44,47 +44,57 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
-        System.out.println("0. Number sum");
-        System.out.println("1. Long square");
-        System.out.println("2. XOR");
-        System.out.println("3. Students");
-        System.out.println("4. Fibonacci");
-        System.out.print("\n Input (0-4): ");
-
-        boolean flag;
+        boolean flag,flag1;
         do {
-            flag =true;
-            Scanner scanner = new Scanner(System.in);
-            if (scanner.hasNextInt()) {
-                switch (scanner.nextInt()) {
-                    case 0:
-                        SumNumber.run();
-                        break;
-                    case 1:
-                        LongSquare.run();
-                        break;
-                    case 2:
-                        Xor.run();
-                        break;
-                    case 3:
-                        Students.run();
-                        break;
-                    case 4:
-                        System.out.print("Iput index: ");
-                        System.out.println(Fibonacci.run(getInputInt()));
-                        break;
-                    default:
-                        System.out.println("error, try again.");
-                        flag = false;
-                        break;
+            flag1 = false;
+
+            System.out.println("\n\n\n0. Number sum");
+            System.out.println("1. Long square");
+            System.out.println("2. XOR");
+            System.out.println("3. Students");
+            System.out.println("4. Fibonacci");
+            System.out.println("5. Exit");
+            System.out.print("\n Input (0-4): ");
+
+
+            do {
+                flag = true;
+                Scanner scanner = new Scanner(System.in);
+                if (scanner.hasNextInt()) {
+                    switch (scanner.nextInt()) {
+                        case 0:
+                            SumNumber.run();
+                            break;
+                        case 1:
+                            LongSquare.run();
+                            break;
+                        case 2:
+                            Xor.run();
+                            break;
+                        case 3:
+                            Students.run();
+                            break;
+                        case 4:
+                            System.out.print("Iput index: ");
+                            System.out.println(Fibonacci.run(getInputInt()));
+                            break;
+                        case 5:
+                            flag1 = true;
+                            flag = true;
+                            break;
+                        default:
+                            System.out.println("error, try again.");
+                            flag = false;
+                            break;
+                    }
+                } else {
+                    System.out.println("error, try again.");
+                    flag = false;
                 }
-            } else {
-                System.out.println("error, try again.");
-                flag = false;
             }
+            while (!flag);
         }
-        while (!flag) ;
+        while (!flag1);
     }
 }
 

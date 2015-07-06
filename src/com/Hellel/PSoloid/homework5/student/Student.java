@@ -3,11 +3,17 @@ package com.Hellel.PSoloid.homework5.student;
 /**
  * Created by ITHILLEL7 on 30.06.2015.
  */
-public class Student {
+public class Student implements Comparable<Student> {
 
     private int id;
     private String surname =null;
     private int[] marks;
+
+    @Override
+    public int compareTo(Student p){
+
+        return surname.compareTo(p.getSurname());
+    }
 
     public Student(){
         id=0;
@@ -32,6 +38,12 @@ public class Student {
         for(int i=0; i<marks.length; i++){
             marks[i] = st.marks[i];
         }
+    }
+
+    public void print() {
+        System.out.println(getId() + " " + getSurname() + "\n");
+        for (int i=0;i<getMarks().length;i++)
+            System.out.print(getMarks()[i]+", ");
     }
 
     public int getId(){

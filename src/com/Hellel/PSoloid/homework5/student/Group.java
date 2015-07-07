@@ -157,11 +157,6 @@ public class Group {
 
     public void sort () {
         Arrays.sort(students);
-//        Student st = new Student();
-//        Arrays.sort(students,new Student());
-//        Arrays.sort(students, new Comparator<Student>() {
-//            public int compare(ObjectName o1, ObjectName o2) {
-//                return o1.toString().compareTo(o2.toString());
     }
 
 

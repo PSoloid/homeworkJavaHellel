@@ -3,27 +3,27 @@ package com.Hellel.PSoloid.homework5.student;
 /**
  * Created by ITHILLEL7 on 30.06.2015.
  */
-public class Student implements Comparable {
+public class Student implements Comparable<Student> {
 
     private int id;
     private String surname =null;
     private int[] marks;
 
     @Override
-    public int compareTo(Object obj)
+    public int compareTo(Student st)
     {
-        Student tmp = (Student)obj;
-        if(this.id < tmp.id)
+
+        if(this.getSurname().charAt(0) < st.getSurname().charAt(0))
         {
-      /* текущее меньше полученного */
+
             return -1;
         }
-        else if(this.id > tmp.id)
+        else if(this.getSurname().charAt(0) > st.getSurname().charAt(0))
         {
-      /* текущее больше полученного */
+
             return 1;
         }
-    /* текущее равно полученному */
+
         return 0;
     }
 

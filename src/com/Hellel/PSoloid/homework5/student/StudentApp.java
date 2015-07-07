@@ -61,10 +61,12 @@ public class StudentApp {
         System.out.println("Merged groups");
         group.print();
 
-//        group.sort();
-//
-//        System.out.println("Sorted group");
-//        group.print();
+        group.trim();
+
+        group.sort();
+
+        System.out.println("Sorted group");
+        group.print();
 
         if (group.equals(group2))
             System.out.println("equal");

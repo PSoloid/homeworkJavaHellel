@@ -113,7 +113,7 @@ public class Group {
     }
 
     public void clear() {
-        int j = numOfStudents;
+        int j = numOfStudents-1;
         for (int i = j; i >= 0; i--) {
             if (students[i] != null)
             delStudent(students[i]);
@@ -134,15 +134,35 @@ public class Group {
         numOfStudents=numOfStudents+group2.numOfStudents;
     }
 
+    public void trim () {
 
+        int j=0;
+//        for ( Student st : students ) {
+//            if (!st.getSurname().equals("")) {
+//                j++;
+//            }
+//        }
 
-//    public void sort () {
+        Student [] newStudents =new Student [numOfStudents] ;
+        j=0;
+        for (int i = 0; i < numOfStudents; i++){
+//            if (!st.equals("")){
+                newStudents[j]=students[i];
+                j++;
+//            }
+
+        }
+        students=newStudents;
+    }
+
+    public void sort () {
+        Arrays.sort(students);
 //        Student st = new Student();
 //        Arrays.sort(students,new Student());
 //        Arrays.sort(students, new Comparator<Student>() {
 //            public int compare(ObjectName o1, ObjectName o2) {
 //                return o1.toString().compareTo(o2.toString());
-//    }
+    }
 
 
     public void containsAll (Group group2){

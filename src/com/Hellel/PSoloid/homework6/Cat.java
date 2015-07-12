@@ -9,6 +9,7 @@ public class Cat extends Pet {
     }
 
     public Cat(int id, int age, float weight, String color, String name, boolean isVactinated) {
+
         this.id = id;
         this.age = age;
         this.weight = weight;

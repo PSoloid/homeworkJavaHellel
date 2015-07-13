@@ -90,33 +90,44 @@ import java.util.Collection;
 
     public boolean retainAll(MyCollection c) {
         boolean flag = false;
-        for (Object object : c.elements)
-            for (int i = 0; i < size(); i++) {
-                if (!object.equals(this.elements[i])) {
-                    remove(this.elements[i]);
+        for (int i = 0; i < size(); i++) {
+            boolean rem = true;
+            for (int j = 0; j < c.size(); j++) {
+                if (elements[i].equals(c.elements[j])) {
                     flag = true;
+                    rem = false;
                 }
             }
+            if (rem){
+                remove(elements[i]);
+                i--;
+            }
+        }
         return flag;
     }
 
 
     public boolean removeAll(MyCollection c) {
         boolean flag = false;
-        for (Object object : c.elements)
-            if (contains(object)) {
-                remove(object);
-                return true;
+        for (int i = 0; i < c.size(); i++){
+            if (contains(c.elements[i])) {
+                remove(c.elements[i]);
+                flag = true;
             }
+        }
+
         return flag;
     }
 
 
     public boolean containsAll(MyCollection c) {
-        for (Object object : c.elements)
-            if (!contains(object)) {
-                return false;
+
+        for (int i = 0; i < c.size(); i++){
+            if (!contains(c.elements[i])) {
+               return false;
             }
+        }
+
         return true;
     }
 

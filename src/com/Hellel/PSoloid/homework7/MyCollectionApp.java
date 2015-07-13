@@ -63,7 +63,7 @@ public class MyCollectionApp {
 
         group.print();
 
-        List<String> stringList = Arrays.asList("1", "2", "4", "3");
+        List<String> stringList = Arrays.asList("1", "2", "3", "4");
 
         if (group.addAll(stringList)) {
             System.out.println("stringList added");
@@ -75,8 +75,10 @@ public class MyCollectionApp {
 
 
         MyCollection group1 = new MyCollection();
+
         Student student7 = new Student(7, "Fedya");
         Student student8 = new Student(8, "Vasya");
+
         group1.add(student3);
         group1.add(student4);
         group1.add(student7);
@@ -93,6 +95,15 @@ public class MyCollectionApp {
 
         group.print();
 
+
+        group.add(student1);
+        group.add(student2);
+        group.add(student5);
+        group.add(student6);
+        group.add(student7);
+        group.add(student8);
+
+        group.print();
 
 
         if (group.containsAll(group1)) {

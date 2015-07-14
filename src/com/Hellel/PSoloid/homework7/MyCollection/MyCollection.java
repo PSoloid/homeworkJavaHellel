@@ -1,4 +1,4 @@
-package com.Hellel.PSoloid.homework7;
+package com.Hellel.PSoloid.homework7.MyCollection;
 
 
 import java.util.Collection;
@@ -8,7 +8,6 @@ import java.util.Collection;
  */
 
     public class MyCollection {
-//        private int capacity = 1000;
         private Object[] elements = new Object[10];
         private int size = 0;
 

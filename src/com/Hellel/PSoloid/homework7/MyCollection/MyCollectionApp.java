@@ -1,10 +1,9 @@
-package com.Hellel.PSoloid.homework7;
+package com.Hellel.PSoloid.homework7.MyCollection;
 
 import com.Hellel.PSoloid.homework5.student.Student;
+import com.Hellel.PSoloid.homework7.MyCollection.MyCollection;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 /**

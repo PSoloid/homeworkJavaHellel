@@ -1,19 +1,25 @@
 package com.Hellel.PSoloid.homework7.MyLinkedList;
 
-import java.awt.dnd.InvalidDnDOperationException;
+import java.util.*;
+
 
 /**
  * Created by otk_prog on 13.07.2015.
  */
-public class MyLinkedList {
+public class MyLinkedList implements Iterable<Object> {
     private Node first;
-    private Node current;
     private Node last;
     private int size;
 
+
     public MyLinkedList() {
         size = 0;
-        first = current = last = null;
+        first = last = null;
+    }
+
+    @Override
+    public Iterator<Object> iterator() {
+        return new MyLinkedListIterator(this.first);
     }
 
     public boolean isEmpty() {
@@ -21,7 +27,7 @@ public class MyLinkedList {
     }
 
 
-    public void Add(Object o) {
+    public void add(Object o) {
 
         Node newNode = new Node(o);
 
@@ -36,58 +42,55 @@ public class MyLinkedList {
     }
 
 
-    public void Print() //вывести в прямом порядке
-    {
-        if (first == null) {
+    public void print() {
+        MyLinkedListIterator itr = new MyLinkedListIterator(first);
+
+        if (isEmpty()) {
             System.out.println("List is empty");
             return;
         }
-        current = first;
+
         int count = 0;
-        while (current != null) {
-            System.out.println("Element " + count + " : " + current.getNode().toString());
+
+        while (itr.hasNext()) {
+            System.out.println("Element " + count + " : " + itr.next().toString());
             count++;
-            current = current.getNext();
         }
     }
 
-    public void ReversePrint() //вывести в обратном порядке
-    {
-        if (last == null) {
-            System.out.print("Doubly Linked List is empty");
+    public void reversePrint(){
+        MyLinkedListIterator itr = new MyLinkedListIterator(last);
+
+        if (isEmpty()) {
+            System.out.println("List is empty");
             return;
         }
-        current = last;
+
         int count = 0;
 
-        System.out.println("\nReverse list\n");
-
-        while (current != null) {
-            System.out.println("Element " + count + " : " + current.getNode().toString());
+        while (itr.hasNext()) {
+            System.out.println("Element " + count + " : " + itr.prev().toString());
             count++;
-            current = current.getPrev();
+
         }
     }
 
-    public boolean remove(Object o) {
+    public void clear() {
+        first = null;
+    }
 
-        if (o == null) {
-            for (Node x = first; x != null; x = x.getNext()) {
-                if (x.getNode() == null) {
-                    unlink(x);
-                    return true;
-                }
-            }
-        } else {
+
+    public boolean remove(Object o) {
             for (Node x = first; x != null; x = x.getNext()) {
                 if (o.equals(x.getNode())) {
                     unlink(x);
                     return true;
                 }
             }
-        }
         return false;
-    }
+        }
+
+//    }
 
     public void unlink(Node o) {
 
@@ -109,23 +112,82 @@ public class MyLinkedList {
         size--;
     }
 
+    public int findIndex(Object o) {
 
-    public Node FindNode(Object o) {
-        current = first;
-        while (current != null) {
-            current = current.getNext();
+        if (first == null) {
+            return -1;
         }
-        return current;
+        MyLinkedListIterator itr = new MyLinkedListIterator(first);
+        int index=0;
+        while (itr.hasNext()){
+            if (itr.next().equals(o)) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
     }
 
     public boolean contains(Object o) {
-        for (Node x = first; x != null; x = x.getNext()) {
-            if (o.equals(x.getNode())) {
+        if (first == null) {
+            return false;
+        }
+        MyLinkedListIterator itr = new MyLinkedListIterator(first);
+
+        while (itr.hasNext()){
+            if (itr.next().equals(o)) {
                 return true;
             }
         }
         return false;
     }
 
+
+    public boolean containsAll(Collection c) {
+        for (Object o : c) {
+            if (!contains(o)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean addAll(Collection c){
+        for (Object o : c) {
+            add(o);
+        }
+        return true;
+    }
+
+    public boolean retainAll(Collection c){
+
+        boolean flag = false;
+
+        MyLinkedListIterator itr = new MyLinkedListIterator(first);
+        MyLinkedList newList = new MyLinkedList();
+        Object tempNode=first;
+
+        do{
+            tempNode=itr.next();
+            if (c.contains(tempNode)) {
+                newList.add(tempNode);
+                flag = true;
+            }
+
+        }while (itr.hasNext());
+        this.first = newList.first;
+        return flag;
+    }
+
+    public boolean removeAll(Collection c){
+        boolean flag = false;
+
+        for (Object o : c) {
+            if (remove(o)) {
+                flag = true;
+            }
+        }
+        return flag;
+    }
 
 }

@@ -26,6 +26,9 @@ public class MyLinkedList implements Iterable<Object> {
         return size == 0;
     }
 
+    public int getSize() {
+        return size;
+    }
 
     public void add(Object o) {
 
@@ -56,6 +59,7 @@ public class MyLinkedList implements Iterable<Object> {
             System.out.println("Element " + count + " : " + itr.next().toString());
             count++;
         }
+        System.out.println("Size = " +getSize());
     }
 
     public void reversePrint(){
@@ -71,8 +75,8 @@ public class MyLinkedList implements Iterable<Object> {
         while (itr.hasNext()) {
             System.out.println("Element " + count + " : " + itr.prev().toString());
             count++;
-
         }
+        System.out.println("Size = " +getSize());
     }
 
     public void clear() {
@@ -110,22 +114,6 @@ public class MyLinkedList implements Iterable<Object> {
 
         o.setNode(null);
         size--;
-    }
-
-    public int findIndex(Object o) {
-
-        if (first == null) {
-            return -1;
-        }
-        MyLinkedListIterator itr = new MyLinkedListIterator(first);
-        int index=0;
-        while (itr.hasNext()){
-            if (itr.next().equals(o)) {
-                return index;
-            }
-            index++;
-        }
-        return -1;
     }
 
     public boolean contains(Object o) {
@@ -176,6 +164,7 @@ public class MyLinkedList implements Iterable<Object> {
 
         }while (itr.hasNext());
         this.first = newList.first;
+        this.size=newList.size;
         return flag;
     }
 

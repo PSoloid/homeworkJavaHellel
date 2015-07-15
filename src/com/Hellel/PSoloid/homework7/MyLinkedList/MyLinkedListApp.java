@@ -26,7 +26,6 @@ public class MyLinkedListApp {
         System.out.println("\nReverse print\n");
         myList.reversePrint();
 
-
         if (myList.isEmpty()) {
             System.out.println("MyLinkedList is empty");
         } else {

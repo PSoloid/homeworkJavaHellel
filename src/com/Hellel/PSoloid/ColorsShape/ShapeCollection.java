@@ -100,16 +100,16 @@ public class ShapeCollection {
         Yellow yellow = new Yellow("Yellow",3,5);
 
         Circle circle = new Circle("Circle",red,7);
-        Parallelogram parallelogram = new Parallelogram("Parallelogram",green,4,3);
         Square square = new Square("Square",blue,4);
         Triangle triangle = new Triangle("Triangle",yellow,4,3);
+        Parallelogram parallelogram = new Parallelogram("Parallelogram",green,4,3);
 
         ShapeCollection shapes = new ShapeCollection();
 
         shapes.add(circle);
-        shapes.add(parallelogram);
         shapes.add(square);
         shapes.add(triangle);
+        shapes.add(parallelogram);
 
         shapes.print();
 

@@ -1,5 +1,7 @@
 package com.Hellel.PSoloid.homework6;
 
+import com.Hellel.PSoloid.homework5.Fish;
+
 /**
  * Created by Morozov on 08.07.2015.
  */

@@ -52,7 +52,8 @@ public class LinkedList implements Collection {
     @Override
     public Iterator iterator() {
 
-        return new LinkedListIterator(iterator().next());
+//        return new LinkedListIterator(iterator().next());
+        return null;
     }
 
 
@@ -68,7 +69,7 @@ public class LinkedList implements Collection {
     @Override
     public boolean add(Object o) {
 
-        Element toAdd = new Element(null,o);
+//        Element toAdd = new Element(null,o);
         Element lastElement = first;
 
         return false;
@@ -178,7 +179,7 @@ public class LinkedList implements Collection {
 
 
         Iterator iterator = list1.iterator();
-        while ();
+//        while ();
 
 
 //        System.out.println(1==1);

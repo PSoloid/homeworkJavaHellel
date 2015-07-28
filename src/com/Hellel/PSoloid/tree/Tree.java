@@ -139,9 +139,10 @@ public class Tree implements Iterable<Object> {
         private Node currentNode;
         private Queue<Node> queue= new LinkedList<Node>();
 
+
         public TreeIterator(Node root){
             this.currentNode = root;
-
+            queue.add(currentNode);
 
         }
 
@@ -150,7 +151,12 @@ public class Tree implements Iterable<Object> {
         }
 
         public Node next(){
-            if(!hasNext()) return null;
+            System.out.println();
+//            sou
+            boolean hN = hasNext();
+
+            if(!hN) return null;
+            System.out.println();
             if (!queue.isEmpty()) {
                 currentNode = queue.remove();
 

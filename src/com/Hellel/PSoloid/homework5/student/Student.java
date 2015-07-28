@@ -1,5 +1,7 @@
 package com.Hellel.PSoloid.homework5.student;
 
+import java.util.Arrays;
+
 /**
  * Created by ITHILLEL7 on 30.06.2015.
  */
@@ -91,5 +93,26 @@ public class Student implements Comparable<Student> {
 
     public int getMark(int lessonNum){
         return this.marks[lessonNum];
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Student student = (Student) o;
+
+        if (id != student.id) return false;
+        if (surname != null ? !surname.equals(student.surname) : student.surname != null) return false;
+//        return Arrays.equals(marks, student.marks);
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+//        result = 31 * result + (marks != null ? Arrays.hashCode(marks) : 0);
+        return result;
     }
 }

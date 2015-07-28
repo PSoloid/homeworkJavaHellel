@@ -85,7 +85,7 @@ public class Tree implements Iterable<Object> {
 
     public static void main(String[] args) {
         Tree tree = new Tree();
-        Node node = new Node(1);
+//        Node node = new Node(1);
         tree.add(5);
         tree.add(4);
         tree.add(8);
@@ -95,10 +95,10 @@ public class Tree implements Iterable<Object> {
         tree.add(6);
         tree.add(2);
         tree.add(7);
-        System.out.println(tree);
+
         System.out.println(tree.getFirst());
         System.out.println(tree.getLast());
-
+        System.out.println(tree);
     }
 
 

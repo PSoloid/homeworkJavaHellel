@@ -3,6 +3,7 @@ package com.Hellel.PSoloid.tree;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 
 public class Tree implements Iterable<Object> {
@@ -136,40 +137,95 @@ public class Tree implements Iterable<Object> {
 
     private class TreeIterator implements Iterator {
 
-        private Node currentNode;
-        private Queue<Node> queue= new LinkedList<Node>();
+        Stack<Node> stack;
 
-
-        public TreeIterator(Node root){
-            this.currentNode = root;
-            queue.add(currentNode);
-
-        }
-
-        public boolean hasNext(){
-            return currentNode != null;
-        }
-
-        public Node next(){
-            System.out.println();
-//            sou
-            boolean hN = hasNext();
-
-            if(!hN) return null;
-            System.out.println();
-            if (!queue.isEmpty()) {
-                currentNode = queue.remove();
-
-                if (currentNode.getLeft() != null) {
-                    queue.add(currentNode.getLeft());
-                }
-                if (currentNode.getRight() != null) {
-                    queue.add(currentNode.getRight());
-                }
-
-                return currentNode;
+        public TreeIterator(Node root) {
+            stack = new Stack<Node>();
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
             }
-            return null;
+        }
+
+        public boolean hasNext() {
+            return !stack.isEmpty();
+        }
+
+        public Object next() {
+            Node node = stack.pop();
+            Object result = node.getData();
+            if (node.right != null) {
+                node = node.right;
+                while (node != null) {
+                    stack.push(node);
+                    node = node.left;
+                }
+            }
+            return result;
+        }
+
+
+
+
+
+
+
+
+
+
+
+//        private Node currentNode;
+////        private Queue<Node> queue= new LinkedList<Node>();
+//
+//
+//        public TreeIterator(Node root){
+//            this.currentNode = root;
+////            queue.add(currentNode);
+//
+//        }
+//
+//        public boolean hasNext(){
+//            return currentNode != null;
+//        }
+//
+//        public Object next() {
+//            return next(currentNode);
+//        }
+//
+//
+//        public Object next(Node currentNode){
+//
+//            if (currentNode== null){
+//                return null;
+//            }
+//            Object rez = currentNode.getData();
+//            next(currentNode.getLeft());
+//            next(currentNode.getRight());
+//
+//            return rez;
+//        }
+
+
+
+//            System.out.println();
+////            sou
+//            boolean hN = hasNext();
+//
+//            if(!hN) return null;
+//            System.out.println();
+//            if (!queue.isEmpty()) {
+//                currentNode = queue.remove();
+//
+//                if (currentNode.getLeft() != null) {
+//                    queue.add(currentNode.getLeft());
+//                }
+//                if (currentNode.getRight() != null) {
+//                    queue.add(currentNode.getRight());
+//                }
+//
+//                return currentNode;
+//            }
+//            return null;
         }
     }
-}
+

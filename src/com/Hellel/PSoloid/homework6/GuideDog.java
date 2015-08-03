@@ -8,9 +8,8 @@ public class GuideDog extends Dog {
     private boolean isTrained;
 
 
-    public GuideDog(int id, int age, float weight, String color, String name, boolean isVactinated, boolean isTrained) {
-        super(id, age, weight, color, name, isVactinated);
-
+    public GuideDog(int id, int age, double weight, String color, boolean isHungry, boolean isSick, String name, boolean isVactinated, boolean isHaircut, boolean isTrained) {
+        super(id, age, weight, color, isHungry, isSick, name, isVactinated, isHaircut);
         this.isTrained = isTrained;
     }
 

@@ -50,30 +50,30 @@ public class Tree implements Iterable<Object> {
 
 //        TREE* Remove(TREE *root, int x)
 //         TREE *t;
-        TreeIterator itr = new TreeIterator(root);
-            if (root == null) {
-                System.out.println("Tree is empty");
-                return;
-            }
-            Node currentNode = itr.next();
-            if (rem.equals(currentNode.getData())) {
-                if (currentNode.getLeft() == null) {
-                   currentNode = currentNode.getRight();
-                }
-                currentNode = currentNode.getLeft();
-                while(t->right) t = t->right;
-                t->right = root->right;
-                return root->left;
-            }
-            if (x <= root->inf)
-                root->left = Remove(root->left, x);
-            else
-                root->right = Remove(root->right, x);
-            return root;
-
-
-
-    }
+//        TreeIterator itr = new TreeIterator(root);
+//            if (root == null) {
+//                System.out.println("Tree is empty");
+//                return;
+//            }
+//            Node currentNode = itr.next();
+//            if (rem.equals(currentNode.getData())) {
+//                if (currentNode.getLeft() == null) {
+//                   currentNode = currentNode.getRight();
+//                }
+//                currentNode = currentNode.getLeft();
+//                while(t->right) t = t->right;
+//                t->right = root->right;
+//                return root->left;
+//            }
+//            if (x <= root->inf)
+//                root->left = Remove(root->left, x);
+//            else
+//                root->right = Remove(root->right, x);
+//            return root;
+//
+//
+//
+//    }
 //        Node<T> curr, replacement;
 //        Node<T> newItem = new Node<T>(t);
 //
@@ -141,7 +141,7 @@ public class Tree implements Iterable<Object> {
 //            } finally {
 //                lock.unlock();
 //            }
-//        }
+        }
 
     public Object getFirst() {
         Node getFirst = root;

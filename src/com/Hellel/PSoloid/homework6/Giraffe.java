@@ -6,13 +6,10 @@ package com.Hellel.PSoloid.homework6;
 public class Giraffe extends SavageAnimal {
 
 
-    public Giraffe(int id, int age, float weight, String color, boolean isPredator) {
-        this.id = id;
-        this.age = age;
-        this.weight = weight;
-        this.color = color;
-        this.isPredator = isPredator;
+    public Giraffe(int id, int age, double weight, String color, boolean isHungry, boolean isSick, boolean isPredator) {
+        super(id, age, weight, color, isHungry, isSick, isPredator);
     }
+
 
     public void bark(){
         super.bark();

@@ -4,10 +4,10 @@ package com.Hellel.PSoloid.tree;
         import java.util.*;
 
 
-public class Tree implements Iterable<Object> {
+public class Tree<T> implements Iterable<T> {
     private Node root;
 
-    public void add(Object object) {
+    public void add(T object) {
         Node node = new Node(object);
         add(node);
     }
@@ -43,125 +43,101 @@ public class Tree implements Iterable<Object> {
 
     }
 
+    public Node find(T data) {
+        return find(root, data);
+    }
+
+    private Node find(Node current, T data) {
+        if (current == null)
+            return null;
+        if (current.getData().equals(data))
+            return current;
+        Object curToObj = current.getData();
+        Comparable curComparable = (Comparable) curToObj;
+        Object dataToObj = current.getData();
+        Comparable dataComparable = (Comparable) dataToObj;
+        return find(dataComparable.compareTo(curComparable) < 0 ? current.getLeft()
+                : current.getRight(), data);
+    }
+
+    public void delete(T data) {
+        root = delete(root, data);
+    }
+
+    private Node delete(Node startNode, T data) {
+        Node element = find(startNode, data);
+        if (element == null) return startNode;
+        boolean hasParent = element.getParent() != null;
 
 
+        Comparable parentComparable = (Comparable) element.getParent().getData();
 
-    public void remove(Object rem) {
+        Comparable elementComparable = (Comparable) element.getData();
 
-//        TREE* Remove(TREE *root, int x)
-//         TREE *t;
-//        TreeIterator itr = new TreeIterator(root);
-//            if (root == null) {
-//                System.out.println("Tree is empty");
-//                return;
-//            }
-//            Node currentNode = itr.next();
-//            if (rem.equals(currentNode.getData())) {
-//                if (currentNode.getLeft() == null) {
-//                   currentNode = currentNode.getRight();
-//                }
-//                currentNode = currentNode.getLeft();
-//                while(t->right) t = t->right;
-//                t->right = root->right;
-//                return root->left;
-//            }
-//            if (x <= root->inf)
-//                root->left = Remove(root->left, x);
-//            else
-//                root->right = Remove(root->right, x);
-//            return root;
-//
-//
-//
-//    }
-//        Node<T> curr, replacement;
-//        Node<T> newItem = new Node<T>(t);
-//
-//        lock.lock();
-//        curr = tree;
-//
-//        try {
-//
-//            if (curr.item != null) {
-//
-//                while (curr.compareTo(newItem) != 0) {
-//                    if (curr.compareTo(newItem) == 1) {
-//                        curr = curr.next;
-//                    }
-//                    else {
-//                        curr = curr.prev;
-//                    }
-//                }
-//
-//                if (curr.next == null && curr.prev == null) {
-//                    curr = null;
-//                }
-//                else if (curr.next == null) {
-//                    curr.item = curr.prev.item;
-//                    curr.prev = null;
-//                }
-//                else if (curr.prev == null) {
-//                    curr.item = curr.next.item;
-//                    curr.next = null;
-//                }
-//                else {
-//                    replacement = curr.next;
-//
-//                    if (replacement.prev != null && replacement.next != null) {
-//                        replacement = replacement.prev;
-//                        Node<T> link = curr.next;
-//
-//                        while (replacement.prev != null) {
-//                            link = replacement;
-//                            replacement = replacement.prev;
-//                        }
-//
-//                        curr.item = replacement.item;
-//
-//                        if (replacement.next != null) {
-//                            link.prev = replacement.next;
-//                        } else {
-//                            replacement = null;
-//                        }
-//
-//                    }
-//                    else if (replacement.next != null) {
-//                        curr.item = replacement.item;
-//                        curr.next = curr.next.next;
-//                    } else {
-//                        curr.item = replacement.item;
-//                        curr.next = null;
-//                    }
-//
-//                }
-//
-//
-//            } catch (UnsupportedOperationException e) {
-//                throw new UnsupportedOperationException();
-//            } finally {
-//                lock.unlock();
-//            }
+        boolean isLeft = hasParent && elementComparable.compareTo(parentComparable) < 0;
+        if (element.getLeft() == null && element.getRight() == null) {
+            if (hasParent) {
+                if (isLeft) {
+                    element.getParent().setLeft(null);
+                } else {
+                    element.getParent().setRight(null);
+                }
+            }
+        } else if (element.getLeft() != null && element.getRight() == null) {
+            if (hasParent) {
+                if (isLeft) {
+                    element.getParent().setLeft(element.getLeft());
+                } else {
+                    element.getParent().setRight(element.getLeft());
+                }
+            } else {
+                startNode = element.getLeft();
+            }
+        } else if (element.getLeft() == null && element.getRight() != null) {
+            if (hasParent) {
+                if (isLeft) {
+                    element.getParent().setLeft(element.getRight());
+                } else {
+                    element.getParent().setRight(element.getRight());
+                }
+            } else {
+                startNode = element.getRight();
+            }
+        } else {
+            Node rightMin = getFirst(element.getRight());
+            element.setData(rightMin.getData());
+            return delete(rightMin, (T) rightMin.getData());
         }
+        element = null;
+        return startNode;
+    }
 
-    public Object getFirst() {
-        Node getFirst = root;
+    public Node getFirst() {
+        return getFirst(root);
+    }
+
+
+    public Node getFirst(Node getFirst) {
         if (getFirst != null) {
             while (getFirst.getLeft() != null) {
                 getFirst = getFirst.getLeft();
             }
         }
-        return getFirst.getData();
+        return getFirst;
     }
 
 
-    public Object getLast() {
-        Node getLast = root;
+    public Node getLast() {
+        return getLast(root);
+    }
+
+    public Node getLast(Node getLast) {
         if (getLast != null) {
             while (getLast.getRight() != null) {
                 getLast = getLast.getRight();
             }
         }
-        return getLast.getData();
+        return getLast;
     }
 
     @Override
@@ -178,7 +154,7 @@ public class Tree implements Iterable<Object> {
 
 
         while (itr.hasNext()) {
-           result += itr.next().getData() + ", ";
+            result += itr.next().getData() + ", ";
         }
         return result;
     }
@@ -186,29 +162,51 @@ public class Tree implements Iterable<Object> {
     public static void main(String[] args) {
         Tree tree = new Tree();
         Node node = new Node(1);
-        tree.add(5);
-        tree.add(4);
-        tree.add(8);
-        tree.add(3);
-        tree.add(9);
-        tree.add(1);
-        tree.add(6);
-        tree.add(2);
-        tree.add(7);
+//        tree.add(5);
+//        tree.add(4);
+//        tree.add(8);
+//        tree.add(3);
+//        tree.add(9);
+//        tree.add(1);
+//        tree.add(6);
+//        tree.add(2);
+//        tree.add(7);
+
+        tree.add("5");
+        tree.add("4");
+        tree.add("8");
+        tree.add("3");
+        tree.add("9");
+        tree.add("1");
+        tree.add("6");
+        tree.add("2");
+        tree.add("7");
+
         System.out.println(tree.getFirst());
         System.out.println(tree.getLast());
         System.out.println(tree);
 
+        tree.delete(4);
 
+        System.out.println(tree);
     }
 
 
-    private static class Node {
-        private Object data;
+    private static class Node<T> {
+        private T data;
         private Node left;
         private Node right;
+        private Node parent;
 
-        public Node(Object data) {
+        public Node getParent() {
+            return parent;
+        }
+
+        public void setParent(Node parent) {
+            this.parent = parent;
+        }
+
+        public Node(T data) {
             this.data = data;
         }
 
@@ -228,8 +226,12 @@ public class Tree implements Iterable<Object> {
             this.right = right;
         }
 
-        public Object getData() {
+        public T getData() {
             return data;
+        }
+
+        public void setData(T data) {
+            this.data = data;
         }
 
         @Override

@@ -6,7 +6,7 @@ import java.util.Iterator;
  * Created by otk_prog on 15.07.2015.
  */
 
-    public class MyLinkedListIterator implements Iterator<Object> {
+    public class MyLinkedListIterator<T> implements Iterator<Object> {
         private Node current;
 
         public MyLinkedListIterator(Node element) {
@@ -19,14 +19,14 @@ import java.util.Iterator;
         }
 
         @Override
-        public Object next() {
-            Object toReturn = current.getNode();
+        public T next() {
+            T toReturn = (T) current.getNode();
             current = current.getNext();
             return toReturn;
         }
 
-        public Object prev() {
-            Object toReturn = current.getNode();
+        public T prev() {
+            T toReturn = (T) current.getNode();
             current = current.getPrev();
             return toReturn;
         }

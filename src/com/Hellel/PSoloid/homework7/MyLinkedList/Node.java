@@ -3,22 +3,22 @@ package com.Hellel.PSoloid.homework7.MyLinkedList;
 /**
  * Created by otk_prog on 13.07.2015.
  */
-public class Node {
+public class Node<T> {
 
-    private Object node;
+    private T node;
     private Node next;
     private Node prev;
 
 
-    public Node(Object node) {
+    public Node(T node) {
         this.node = node;
     }
 
-    public Object getNode() {
+    public T getNode() {
         return node;
     }
 
-    public void setNode(Object node) {
+    public void setNode(T node) {
         this.node = node;
     }
 
@@ -38,7 +38,10 @@ public class Node {
         this.prev = prev;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Node{" +
+                "node=" + node +
+                '}';
+    }
 }

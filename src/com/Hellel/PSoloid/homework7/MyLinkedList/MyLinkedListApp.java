@@ -6,13 +6,13 @@ import java.util.List;
 /**
  * Created by otk_prog on 14.07.2015.
  */
-public class MyLinkedListApp {
+public class MyLinkedListApp<T> {
     public static void main(String[] args) {
-        Node elem1 = new Node(1);
-        Node elem2 = new Node(2);
-        Node elem3 = new Node(3);
-        Node elem4 = new Node(4);
-        Node elem5 = new Node(5);
+        Node elem1 = new Node("11");
+        Node elem2 = new Node("22");
+        Node elem3 = new Node("33");
+        Node elem4 = new Node("44");
+        Node elem5 = new Node("55");
 
         MyLinkedList myList = new MyLinkedList();
 
@@ -48,9 +48,10 @@ public class MyLinkedListApp {
 
 
 
-        List<String> stringList = Arrays.asList("1", "2", "3", "4");
+        List list =  Arrays.asList(1, 2, 3, 4, 5);
 
-        if (myList.addAll(stringList)) {
+
+        if (myList.addAll(list)) {
             System.out.println("stringList added");
         } else {
             System.out.println("stringList did not add");
@@ -71,7 +72,7 @@ public class MyLinkedListApp {
 //
 //
 //        group1.print();
-        if (myList.containsAll(stringList)) {
+        if (myList.containsAll(list)) {
             System.out.println("group1 contained");
         } else {
             System.out.println("group1 did not contain");
@@ -80,7 +81,7 @@ public class MyLinkedListApp {
         myList.print();
 
 
-        if (myList.retainAll(stringList)) {
+        if (myList.retainAll(list)) {
             System.out.println("group1 retained");
         } else {
             System.out.println("group1 did not retain");
@@ -101,7 +102,7 @@ public class MyLinkedListApp {
 
 
 
-        if (myList.removeAll(stringList)) {
+        if (myList.removeAll(list)) {
             System.out.println("removed All");
         } else {
             System.out.println("did not remove All");

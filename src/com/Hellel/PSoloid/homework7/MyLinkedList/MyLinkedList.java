@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * Created by otk_prog on 13.07.2015.
  */
-public class MyLinkedList implements Iterable<Object> {
+public class MyLinkedList<T> implements Iterable<Object> {
     private Node first;
     private Node last;
     private int size;
@@ -30,7 +30,7 @@ public class MyLinkedList implements Iterable<Object> {
         return size;
     }
 
-    public void add(Object o) {
+    public void add(T o) {
 
         Node newNode = new Node(o);
 
@@ -84,7 +84,7 @@ public class MyLinkedList implements Iterable<Object> {
     }
 
 
-    public boolean remove(Object o) {
+    public boolean remove(T o) {
             for (Node x = first; x != null; x = x.getNext()) {
                 if (o.equals(x.getNode())) {
                     unlink(x);
@@ -116,7 +116,7 @@ public class MyLinkedList implements Iterable<Object> {
         size--;
     }
 
-    public boolean contains(Object o) {
+    public boolean contains(T o) {
         if (first == null) {
             return false;
         }
@@ -133,7 +133,7 @@ public class MyLinkedList implements Iterable<Object> {
 
     public boolean containsAll(Collection c) {
         for (Object o : c) {
-            if (!contains(o)) {
+            if (!contains((T)o)) {
                 return false;
             }
         }
@@ -142,7 +142,7 @@ public class MyLinkedList implements Iterable<Object> {
 
     public boolean addAll(Collection c){
         for (Object o : c) {
-            add(o);
+            add((T)o);
         }
         return true;
     }
@@ -172,7 +172,7 @@ public class MyLinkedList implements Iterable<Object> {
         boolean flag = false;
 
         for (Object o : c) {
-            if (remove(o)) {
+            if (remove((T)o)) {
                 flag = true;
             }
         }

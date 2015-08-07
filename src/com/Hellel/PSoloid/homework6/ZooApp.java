@@ -12,9 +12,11 @@ import java.util.List;
 
 public class ZooApp {
 
-    public static List init() {
+    public static Zoo init() {
 
-        List<Animal> zoo = new ArrayList<Animal>();
+        Giraffe giraffe;
+
+        Zoo zoo = new Zoo();
 
         Cat cat = new Cat(1, 3, 3.4, "Grey", true, false, "Murka", true, true);
         zoo.add(cat);
@@ -30,39 +32,49 @@ public class ZooApp {
         zoo.add(cleverDog);
         GuideDog notCleverDog = new GuideDog(7, 1, 3, "Grey", true, false, "Muhtar", true, false, false);
         zoo.add(notCleverDog);
-        Giraffe giraffe = new Giraffe(8, 33, 36, "Spot", false, true, false);
+        giraffe = new Giraffe(8, 33, 36, "Spot", false, true, false);
         zoo.add(giraffe);
         return zoo;
 
     }
 
 
-
-
     public static void main(String[] args) {
 
-        List<Animal> zoo = init();
-
-        Observer doctor = new SicknessObserver();
-        Observer feederWild = new HungryObserver();
-        Observer feederPet = new HungryObserver();
-        Observer groomer = new GroomerObserver();
-        Observer headmaster = new HeadmasterObserver();
-
-        for ( Animal o : zoo) {
-            o.addObserver(doctor);
-            o.addObserver(feederWild);
-            o.addObserver(groomer);
-            o.addObserver(headmaster);
-            o.addObserver(feederPet);
-        }
-
-        for ( Animal o : zoo) {
-            o.notifyObservers();
-            System.out.println();
-        }
+        Zoo zoo = init();
+        System.out.println(zoo.remove(1000));
+        addGirafe(zoo);
+        System.out.println(zoo.get(6));
     }
+
+
+public static void addGirafe(Zoo zoo){
+    zoo.add("giraffe");
 }
+
+
+//        List<Animal> zoo = init();
+//
+//        Observer doctor = new SicknessObserver();
+//        Observer feederWild = new HungryObserver();
+//        Observer feederPet = new HungryObserver();
+//        Observer groomer = new GroomerObserver();
+//        Observer headmaster = new HeadmasterObserver();
+//
+//        for ( Animal o : zoo) {
+//            o.addObserver(doctor);
+//            o.addObserver(feederWild);
+//            o.addObserver(groomer);
+//            o.addObserver(headmaster);
+//            o.addObserver(feederPet);
+//        }
+//
+//        for ( Animal o : zoo) {
+//            o.notifyObservers();
+//            System.out.println();
+//        }
+//    }
+//}
 
 
 

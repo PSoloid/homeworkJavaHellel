@@ -48,8 +48,9 @@ public class ZooApp {
     }
 
 
-public static void addGirafe(Zoo zoo){
-    zoo.add("giraffe");
+    public static void addGirafe(Zoo zoo) {
+//    zoo.add("giraffe");
+    }
 }
 
 

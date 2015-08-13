@@ -2,6 +2,7 @@ package com.Hellel.PSoloid.homework7.MyLinkedList;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Created by otk_prog on 14.07.2015.
@@ -114,5 +115,12 @@ public class MyLinkedListApp<T> {
 
         System.out.println("MyLinkedList is clear");
         myList.print();
+
+        try {
+            myList.reversePrint();
+        } catch (NoSuchElementException e) {
+            System.out.println("List is empty");
+            e.printStackTrace();
+        }
     }
 }

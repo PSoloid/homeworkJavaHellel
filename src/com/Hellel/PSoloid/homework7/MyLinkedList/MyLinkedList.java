@@ -72,10 +72,10 @@ public class MyLinkedList<T> implements Iterable<Object> {
             System.err.println("(2): " + e.getMessage());
             e.printStackTrace();
         }
-        System.out.println("Size = " +getSize());
+        System.out.println("Size = " + getSize());
     }
 
-    public void reversePrint() throws NoSuchElementException{
+    public void reversePrint() throws NoSuchElementException {
         MyLinkedListIterator itr = new MyLinkedListIterator(last);
 
         if (isEmpty()) {
@@ -90,7 +90,7 @@ public class MyLinkedList<T> implements Iterable<Object> {
             System.out.println("Element " + count + " : " + itr.prev().toString());
             count++;
         }
-        System.out.println("Size = " +getSize());
+        System.out.println("Size = " + getSize());
     }
 
     public void clear() {
@@ -111,7 +111,7 @@ public class MyLinkedList<T> implements Iterable<Object> {
             e.printStackTrace();
         }
         return false;
-        }
+    }
 
 //    }
 
@@ -147,7 +147,7 @@ public class MyLinkedList<T> implements Iterable<Object> {
         MyLinkedListIterator itr = new MyLinkedListIterator(first);
 
         try {
-            while (itr.hasNext()){
+            while (itr.hasNext()) {
                 if (itr.next().equals(o)) {
                     return true;
                 }
@@ -166,7 +166,7 @@ public class MyLinkedList<T> implements Iterable<Object> {
     public boolean containsAll(Collection c) {
         try {
             for (Object o : c) {
-                if (!contains((T)o)) {
+                if (!contains((T) o)) {
                     return false;
                 }
             }
@@ -226,22 +226,22 @@ public class MyLinkedList<T> implements Iterable<Object> {
         return flag;
     }
 
-    public boolean removeAll(Collection c){
+    public boolean removeAll(Collection c) {
         boolean flag = false;
 
         try {
-        for (Object o : c) {
-            if (remove((T)o)) {
-                flag = true;
+            for (Object o : c) {
+                if (remove((T) o)) {
+                    flag = true;
+                }
             }
+        } catch (ClassCastException e) {
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            System.err.println(e.getMessage());
+            e.printStackTrace();
         }
-    } catch (ClassCastException e) {
-        System.err.println(e.getMessage());
-        e.printStackTrace();
-    } catch (NullPointerException e) {
-        System.err.println(e.getMessage());
-        e.printStackTrace();
-    }
         return flag;
     }
 

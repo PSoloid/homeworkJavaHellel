@@ -1,11 +1,12 @@
 package com.Hellel.PSoloid.homework5.student;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * Created by ITHILLEL7 on 30.06.2015.
  */
-public class Student implements Comparable<Student> {
+public class Student implements Comparable<Student>, Serializable {
 
     private int id;
     private String surname =null;
@@ -52,6 +53,15 @@ public class Student implements Comparable<Student> {
         for(int i=0; i<marks.length; i++){
             marks[i] = st.marks[i];
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", surname='" + surname + '\'' +
+                ", marks=" + Arrays.toString(marks) +
+                '}';
     }
 
     public void print() {

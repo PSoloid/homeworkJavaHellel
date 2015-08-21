@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_45" class="java.beans.XMLDecoder">
+ <object class="com.Hellel.PSoloid.serializationgamesaving.GameCharacter">
+  <void property="name">
+   <string>Ork</string>
+  </void>
+  <void property="power">
+   <int>85</int>
+  </void>
+  <void property="type">
+   <object class="com.Hellel.PSoloid.serializationgamesaving.CharacterType">
+    <void property="skinColor">
+     <string>green</string>
+    </void>
+    <void property="typeName">
+     <string>ork</string>
+    </void>
+   </object>
+  </void>
+  <void property="weapons">
+   <array class="java.lang.String" length="2">
+    <void index="0">
+     <string>hands</string>
+    </void>
+    <void index="1">
+     <string>axe</string>
+    </void>
+   </array>
+  </void>
+ </object>
+</java>

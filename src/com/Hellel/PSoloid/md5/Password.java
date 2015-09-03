@@ -14,8 +14,6 @@ public class Password {
 
     public static void main(String[] args) {
 
-
-
         Runnable task1 = () -> {
             System.out.println("\nThread 1 : " + searchPassword(7, "13d70e09909669272b19647c2a55dacb"));
             System.out.println("Thread 1 finished");
@@ -37,46 +35,18 @@ public class Password {
         Thread thread3 = new Thread(task3);
         thread3.start();
 
-        Runnable task4 = () -> {
-            System.out.println("\nThread 4 : " + searchPassword(10, "13d70e09909669272b19647c2a55dacb"));
-            System.out.println("Thread 4 finished");
-        };
-        Thread thread4 = new Thread(task4);
-        thread4.start();
-
-//        Runnable task5 = () -> {
-//            System.out.println("\nThread 5 : " + searchPassword(9, "13d70e09909669272b19647c2a55dacb"));
-//        };
-//        Thread thread5 = new Thread(task5);
-//        thread5.start();
-
-
-
-        System.out.println("\nHash 1: " + searchPassword(4, "f016441d00c16c9b912d05e9d81d894d"));
-//        System.out.println("\nHash2: " + searchPassword(6, "5ebe2294ecd0e0f08eab7690d2a6ee69"));
-        System.out.println("\nHash 2 from file: " + slovar("5ebe2294ecd0e0f08eab7690d2a6ee69"));
-
 
         System.out.println("\nAll permutation Hash 1 : " + searchPassword("f016441d00c16c9b912d05e9d81d894d"));
 
+        System.out.println("\nHash 1: " + searchPassword(4, "f016441d00c16c9b912d05e9d81d894d"));
+
+        System.out.println("\nHash 2 from file: " + slovar("5ebe2294ecd0e0f08eab7690d2a6ee69"));
+
+
+
+
         System.out.println("\nHash 3: " + searchPassword(10, "13d70e09909669272b19647c2a55dacb"));
         System.out.println("\nAll permutation Hash 3 : " + searchPassword("13d70e09909669272b19647c2a55dacb"));
-
-
-//        Runnable runnable = new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                System.out.println("\nThread 1 : " + searchPassword(4, "f016441d00c16c9b912d05e9d81d894d"));
-//
-//
-//            }
-//        };
-//
-//
-//        Thread thread = new Thread(runnable);
-//        thread.start();
-
 
     }
 
@@ -119,23 +89,18 @@ public class Password {
         String threadName = Thread.currentThread().getName();
         System.out.println("Thread "+ threadName + " lenght " + len);
 
-
-
         while (len <= lenght) {
-
-            int pow[] = new int[len + 1];//массив для степеней числа N: N^0, N^1, .., N^K
+            int pow[] = new int[len + 1];
             pow[0] = 1;
-            for (int i = 1; i <= len; i++) {//вычисляем степени числа N
+            for (int i = 1; i <= len; i++) {
                 pow[i] = pow[i - 1] * ALPHABET.length();
             }
             StringBuffer resultBuf = new StringBuffer();
 
-
             for (int i = 0; i < pow[len]; i++) {
                 char arr[] = new char[len];
-                //вычисляем элементы комбинации
-                for (int j = 0; j < len; j++) {
 
+                for (int j = 0; j < len; j++) {
                     arr[j] = ALPHABET.charAt((i / pow[j]) % ALPHABET.length());
                 }
 
@@ -156,22 +121,20 @@ public class Password {
         }
 
 
-
     public static String searchPassword(String hash) {
         int len = 1;
-//        long currentPermutation = 1;
+
         while (len <= 15) {
-            int pow[] = new int[len + 1];//массив для степеней числа N: N^0, N^1, .., N^K
+            int pow[] = new int[len + 1];
             pow[0] = 1;
-            for (int i = 1; i <= len; i++) {//вычисляем степени числа N
+            for (int i = 1; i <= len; i++) {
                 pow[i] = pow[i - 1] * ALPHABET.length();
             }
             StringBuffer resultBuf = new StringBuffer();
 
-
             for (int i = 0; i < pow[len]; i++) {
                 char arr[] = new char[len];
-                //вычисляем элементы комбинации
+
                 for (int j = 0; j < len; j++) {
 
                     arr[j] = ALPHABET.charAt((i / pow[j]) % ALPHABET.length());
@@ -191,11 +154,9 @@ public class Password {
                 }
             }
             len ++;
-//           currentPermutation ++;
         }
         return "Password not found";
     }
-
 
     public static long permutationCount(int len) {
         int result = 0;
@@ -208,78 +169,15 @@ public class Password {
 
     public static String getHash(String text) throws NoSuchAlgorithmException {
 
-
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(text.getBytes());
 
         byte byteData[] = md.digest();
-
 
         StringBuffer sb = new StringBuffer();
         for (byte aByteData : byteData) {
             sb.append(Integer.toString((aByteData & 0xff) + 0x100, 16).substring(1));
         }
         return sb.toString();
-
     }
-
-
-
-
-
-//    public class newThread extends Thread {
-//
-//        int lenght;
-//        String hash;
-//
-//        public newThread(int lenght, String hash) {
-//            this.lenght = lenght;
-//            this.hash = hash;
-//        }
-//
-//        @Override
-//        public void run() {
-
-//int len =lenght;
-////            String threadName = Thread.currentThread().getName();
-//            while (len <= lenght+3) {
-//                System.out.println("Thread " + Thread.currentThread().getName() + " lenght " + len);
-//                int pow[] = new int[len + 1];//массив для степеней числа N: N^0, N^1, .., N^K
-//                pow[0] = 1;
-//                for (int i = 1; i <= len; i++) {//вычисляем степени числа N
-//                    pow[i] = pow[i - 1] * ALPHABET.length();
-//                }
-//                StringBuffer resultBuf = new StringBuffer();
-//
-//
-//                for (int i = 0; i < pow[len]; i++) {
-//                    char arr[] = new char[len];
-//                    //вычисляем элементы комбинации
-//                    for (int j = 0; j < len; j++) {
-//
-//                        arr[j] = ALPHABET.charAt((i / pow[j]) % ALPHABET.length());
-//                    }
-//
-//                    resultBuf.setLength(0);
-//                    for (char ch : arr) {
-//                        resultBuf.append(ch);
-//
-//                    }
-//                    try {
-//                        if (hash.equals(getHash(resultBuf.toString()))) {
-//                            System.out.println(resultBuf.toString());
-//                        }
-//                    } catch (NoSuchAlgorithmException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                len ++;
-////           currentPermutation ++;
-//            }
-//            System.out.println("Password not found");
-//        }
-//        }
-//    }
-
-
 }

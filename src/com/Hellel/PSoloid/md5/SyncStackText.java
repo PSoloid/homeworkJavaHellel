@@ -43,6 +43,7 @@ public class SyncStackText {
 
         this.notify();
         System.out.println("Consumer buffer size: " + buffer.size());
+
         return (String) (buffer.remove(buffer.size() - 1));
     }
 }

@@ -16,11 +16,6 @@ public class HashTest {
         Thread consOneThread = new Thread(consumer1);
         consOneThread.start();
 
-
-
-
-        //second iteration
-        BlockingQueue queue = new ArrayBlockingQueue(3);
     }
 
 }
